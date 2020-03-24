@@ -1,0 +1,30 @@
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                    <h6>{{ messages[0] }}</h6>
+            {% endif %}
+    {% endwith %}
+    <table>
+        <form action="signup_user" method="post">
+        
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" id="email"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="text" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </form>
+    </table>
+{% endblock %}
