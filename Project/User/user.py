@@ -10,3 +10,7 @@ user = Blueprint('user', __name__, template_folder='user_template', static_folde
 def user_homepage():
     return render_template("user_homepage.html")
 
+@user.route('test', methods=["POST", "GET"])
+def url_check():
+    return render_template("user_result.html")
+

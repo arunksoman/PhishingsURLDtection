@@ -7,10 +7,7 @@
 {% block body %}
     {% if current_user.is_authenticated %}
         <!-- <h4>Welcome {{ current_user.username }}</h4> -->
-        <form autocomplete="off" method="post" action="{{ url_for('user.url_check') }}">
-            <input type="text" name="url" placeholder="Enter URL..." id="">
-            <input type="submit" class="w3-large w3-teal" value="Submit">
-        </form>
+        Expected Result
         {% else %}
             <h4>Please Login First</h4>
     {% endif %}
