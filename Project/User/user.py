@@ -2,7 +2,9 @@ from flask import Blueprint, render_template, session, request, url_for, redirec
 from flask_login import logout_user
 from Project import app
 from flask_user import roles_required, login_required, current_user
+from ..checker import url_checker
 from ..Models.models import *
+
 user = Blueprint('user', __name__, template_folder='user_template', static_folder='user_static', url_prefix='/user')
 
 @user.route('homepage')
@@ -12,5 +14,9 @@ def user_homepage():
 
 @user.route('test', methods=["POST", "GET"])
 def url_check():
+    if request.method == "POST":
+        url = request.form.get("url")
+        result = url_checker(url)
+        print(result)
     return render_template("user_result.html")
 
