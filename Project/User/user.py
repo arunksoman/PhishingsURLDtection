@@ -12,11 +12,12 @@ user = Blueprint('user', __name__, template_folder='user_template', static_folde
 def user_homepage():
     return render_template("user_homepage.html")
 
-@user.route('test', methods=["POST", "GET"])
+@user.route('test', methods=["POST"])
 def url_check():
     if request.method == "POST":
         url = request.form.get("url")
         result = url_checker(url)
-        print(result)
-    return render_template("user_result.html")
-
+        if result:
+            return render_template("user_result.html", url="malicious", css_class="error")
+        else:
+            return render_template("user_result.html", url="benign", css_class="success")

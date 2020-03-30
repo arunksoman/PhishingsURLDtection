@@ -7,7 +7,14 @@
 {% block body %}
     {% if current_user.is_authenticated %}
         <!-- <h4>Welcome {{ current_user.username }}</h4> -->
-        Expected Result
+        {% if url == 'malicious' %}
+            <img src="{{ url_for('user.static', filename='bummer.svg') }}" />
+            <p class="{{ css_class }}">It is most probably a Malicious URL</p>
+        {% endif %}
+        {% if url == 'benign' %}
+            <img src="{{ url_for('user.static', filename='tick.svg') }}" />
+            <p class="{{ css_class }}">It is most probably a Benign URL</p>
+        {% endif %}
         {% else %}
             <h4>Please Login First</h4>
     {% endif %}
